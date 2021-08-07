@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //기본형
+        // function hello() {
+        //     alert('Hello')
+        // }
+        // setTimeout(Hello, 1000);
+
+        //인수 넘겨주기
+        /* function condition(day, emotion) {
+            alert(day + ' is ' + emotion);
+        }
+        setTimeout(condition, 1000, "Sunday", "good"); */
+
+        //중첩 setTimeout
+
+        let count = 0;
+
+        function add() {
+            count++;
+            console.log(count);
+        }
+
+        let time = setTimeout(function request() {
+            add();
+            setTimeout(request, 1000);
+        }, 1000);
+
+        //중지
+        // clearTimeout(time);
+    </script>
+</body>
+
+</html>
