@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">눌러봐</button>
+    <script>
+      const buttonElement = document.getElementById("btn");
+
+      // 콜백 함수를 제공함으로써 '클릭' 이벤트를 처리하는 핸들러를 추가합니다.
+      // 엘리먼트가 클릭될 떄마다, "누름!" 팝업이 나타날것입니다.
+      buttonElement.addEventListener("click", function (event) {
+        alert("누름!");
+      });
+    </script>
+  </body>
+</html>
