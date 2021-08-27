@@ -48,6 +48,45 @@
             alert("100원 넣음");
             document.getElementById("current").innerHTML = coin + "원";
         }
+
+        function PullingCoffee() {
+            if (coin < 700) {
+                alert("돈이 부족")
+            } else {
+                coin -= 700;
+                alert("커피 나옴")
+                document.getElementById("current").innerHTML = coin + "원";
+            }
+        }
+
+        function PullingWater() {
+            if (coin < 500) {
+                alert("돈이 부족")
+            } else {
+                coin -= 500;
+                alert("물 나옴")
+                document.getElementById("current").innerHTML = coin + "원";
+            }
+        }
+
+        function PullingTea() {
+            if (coin < 1000) {
+                alert("돈이 부족")
+            } else {
+                coin -= 1000;
+                alert("물 나옴")
+                document.getElementById("current").innerHTML = coin + "원";
+            }
+        }
+
+        const coffee = document.getElementById("coffee");
+        coffee.addEventListener("click", PullingCoffee);
+
+        const water = document.getElementById("water");
+        water.addEventListener("click", PullingWater);
+
+        const tea = document.getElementById("tea");
+        tea.addEventListener("click", PullingTea);
     </script>
 </body>
 
