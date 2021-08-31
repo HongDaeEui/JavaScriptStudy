@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 검색 필터 선택 -->
+    <input type="checkbox" id="age10" name="age" value="10" onchange="makeFilter(this)">
+    <label for="age10">10세</label>
+    <input type="checkbox" id="age20" name="age" value="20" onchange="makeFilter(this)">
+    <label for="age20">20세</label>
+    <input type="checkbox" id="age30" name="age" value="30" onchange="makeFilter(this)">
+    <label for="age30">30세</label>
+    <input type="checkbox" id="age40" name="age" value="40" onchange="makeFilter(this)">
+    <label for="age40">40세</label>
+    <input type="checkbox" id="age50" name="age" value="50" onchange="makeFilter(this)">
+    <label for="age50">50세</label>
+
+    <br>
+    필터입력값 : <input type="text" id="showFilter">
+
+    <script>
+        var ageArr = new Array(); //필터 내용을 저장하는 배열
+        var showFilterValue = document.getElementById("showFilter");
+
+        function makeFilter(target) {
+
+            var ageVal = target.value; //check value
+            var confirmCheck = target.checked; //checked or not checked
+            console.log("필터 선택값 : " + ageVal);
+            console.log("선택여부 : " + confirmCheck);
+
+            if (confirmCheck == true) {
+
+                ageArr.push(ageVal);
+            } else {
+                ageArr.splice(ageArr.indexOf(ageVal), 1) // ageArr 배열의 index를 구하고, 그 요소 1개를 삭제
+            }
+
+            showFilterValue.value = ageArr;
+            console.log("필터입력값 출력 : " + ageArr);
+
+        }
+    </script>
+
+</body>
+
+</html>
