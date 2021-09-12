@@ -1,0 +1,42 @@
+<header></header>
+
+<section></section>
+<script>
+  var header = document.querySelector("header");
+  var section = document.querySelector("section");
+
+  var requestURL =
+    "https://raw.githubusercontent.com/HongDaeEui/SolidityProject/main/nft/0000000000000000000000000000000000000000000000000000000000000000.json";
+  var request = new XMLHttpRequest();
+  request.open("GET", requestURL);
+  request.responseType = "json";
+  request.send();
+  request.onload = function () {
+    var treeInfo = request.response;
+    populateHeader(treeInfo);
+    showTree(treeInfo);
+  };
+
+  function populateHeader(jsonObj) {
+    var myH1 = document.createElement("h1");
+    myH1.textContent = jsonObj["name"];
+    header.appendChild(myH1);
+  }
+
+  function showTree(jsonObj) {
+    var myArticle = document.createElement("article");
+    var treeDesription = jsonObj["description"];
+    var treeImage = jsonObj["image"];
+
+    var myPara = document.createElement("p");
+    myPara.textContent = treeDesription;
+
+    var myImg = document.createElement("img");
+    myImg.src = treeImage;
+
+    myArticle.appendChild(myPara);
+    myArticle.appendChild(myImg);
+
+    section.appendChild(myArticle);
+  }
+</script>
