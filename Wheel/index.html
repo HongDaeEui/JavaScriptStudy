@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      .header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .header > ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0 30px;
+      }
+
+      .main > section {
+        min-height: 100vh;
+        padding-top: 70px;
+      }
+
+      .footer {
+        background: #ccc;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <ul>
+        <li>Section 1</li>
+        <li>Section 2</li>
+        <li>Section 3</li>
+      </ul>
+    </header>
+
+    <main class="main">
+      <section>
+        <h2>Section 1 title</h2>
+        <p>Section contents</p>
+      </section>
+      <section>
+        <h2>Section 2 title</h2>
+        <p>Section contents</p>
+      </section>
+      <section>
+        <h2>Section 3 title</h2>
+        <p>Section contents</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy;2021</p>
+    </footer>
+    <script>
+      let elNavi = document.querySelector(".header > ul");
+      let aElSection = document.querySelectorAll(".main > section");
+      let curSIdx = 0;
+      Array.from(elNavi.children, function (elMenu, idx, elMenus) {
+        elMenu.addEventListener("click", function () {
+          doScroll(idx);
+        });
+      });
+      let wheelTimer;
+      window.addEventListener("wheel", function (e) {
+        clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(function () {
+          if (e.deltaY < 0) doScroll(++curSIdx);
+          else doScroll(--curSIdx);
+        }, 50);
+      });
+      function doScroll(sidx) {
+        console.log(sidx);
+        sidx = sidx < 0 ? 0 : sidx;
+        sidx = sidx > aElSection.length - 1 ? aElSection.length - 1 : sidx;
+
+        curSIdx = sidx;
+
+        aElSection[curSIdx].scrollIntoView({
+          block: "start",
+          inline: "start",
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>
